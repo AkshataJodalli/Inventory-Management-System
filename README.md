@@ -33,6 +33,8 @@ This project is perfect for learning Flask, MySQL integration, and creating a fu
 ### Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
+
+
 ---
 
 ## How to Run
