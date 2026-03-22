@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .update-btn {
+            background-color: #4CAF50;
+        }
+
+        .cancel-btn {
+            background-color: red;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Product</h2>
+        <form method="POST">
+            <input type="text" name="name" value="{{ product[1] }}" placeholder="Product Name" required><br>
+            <input type="number" name="quantity" value="{{ product[2] }}" placeholder="Quantity" required><br>
+            <input type="number" name="price" value="{{ product[3] }}" placeholder="Price" required><br>
+            <button type="submit" class="update-btn">Update</button>
+        </form>
+        <a href="/dashboard"><button class="cancel-btn">Cancel</button></a>
+    </div>
+</body>
+</html>

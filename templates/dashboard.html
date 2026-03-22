@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h1, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+
+        .add-btn {
+            background-color: #4CAF50;
+        }
+
+        .edit-btn {
+            background-color: orange;
+        }
+
+        .delete-btn {
+            background-color: red;
+        }
+
+        .logout-btn {
+            background-color: red;
+            float: right;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-row input {
+            width: 150px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        h3.total {
+            margin-top: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory Dashboard</h1>
+        <a href="/logout"><button class="logout-btn">Logout</button></a>
+        <div class="clear"></div>
+
+        <h3 class="total">Total Inventory Value: {{ total_value }}</h3>
+
+        <!-- Add Product Form -->
+        <form action="/add" method="POST" class="form-row">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <input type="number" name="price" placeholder="Price" required>
+            <button type="submit" class="add-btn">Add Product</button>
+        </form>
+
+        <!-- Product Table -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product[0] }}</td>
+                <td>{{ product[1] }}</td>
+                <td>{{ product[2] }}</td>
+                <td>{{ product[3] }}</td>
+                <td>
+                    <a href="/edit/{{ product[0] }}"><button class="edit-btn">Edit</button></a>
+                    <a href="/delete/{{ product[0] }}"><button class="delete-btn">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
